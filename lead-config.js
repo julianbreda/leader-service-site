@@ -15,6 +15,6 @@ window.LS_LEADS = {
     dev:  "https://bryzqzaltmemvdilunqe.supabase.co/functions/v1/website-lead",
     live: ""    // https://<prod-ref>.supabase.co/functions/v1/website-lead
   },
-  key: "",
+  key: "Tmm4aE8TQgkNMa2jwpFBXfu24HcKPNfA",
   emailBackupKey: ""
 };

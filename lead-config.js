@@ -12,7 +12,7 @@
 window.LS_LEADS = {
   use: "",
   endpoints: {
-    dev:  "",   // https://<staging-ref>.supabase.co/functions/v1/website-lead
+    dev:  "https://bryzqzaltmemvdilunqe.supabase.co/functions/v1/website-lead",
     live: ""    // https://<prod-ref>.supabase.co/functions/v1/website-lead
   },
   key: "",

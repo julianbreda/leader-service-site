@@ -63,6 +63,8 @@
       if (stepNum) stepNum.textContent = done ? 3 : Math.min(3, s+1);
     }
     f.addEventListener('input', function(){ steps(false); }); steps(false);
+    var note = f.querySelector('.emerg-note');
+    if (note) f.urgency.addEventListener('change', function(){ note.hidden = !/Emergency/.test(f.urgency.value); });
 
     function say(text, err){ msg.textContent = text; msg.style.display = 'block'; msg.classList.toggle('err', !!err); }
 
@@ -81,6 +83,8 @@
         phone: f.phone.value.trim(),
         email: (f.email && f.email.value.trim()) || '',
         address: (f.address && f.address.value.trim()) || '',
+        city: (f.city && f.city.value.trim()) || '',
+        postal_code: (f.postal_code && f.postal_code.value.trim().toUpperCase()) || '',
         service: f.service.value,
         urgency: f.urgency.value,
         message: (f.message && f.message.value.trim()) || '',

@@ -28,7 +28,9 @@ The key is visible in the site's JavaScript, so it is a **spam filter, not a sec
   "name": "Jane Smith",
   "phone": "905 555 0123",
   "email": "",
-  "address": "12 Example Ct, Kleinburg",
+  "address": "12 Example Ct",
+  "city": "Kleinburg",
+  "postal_code": "L0J 1C0",
   "service": "Radiant heat / snowmelt",
   "urgency": "Standard | Same-day | Emergency (24/7)",
   "message": "free text, optional",
@@ -45,7 +47,7 @@ The key is visible in the site's JavaScript, so it is a **spam filter, not a sec
 }
 ```
 
-`service` is one of: Heating — furnace or boiler · Air conditioning or heat pump · Plumbing · Water heater / tankless · Drain cleaning or backup · Sump pump / backwater valve · Water filtration / softener · Radiant heat / snowmelt · Emergency flood response · Maintenance program walkthrough · Commercial HVAC · Commercial backflow testing · Commercial boiler / plumbing · Commercial maintenance program · Not sure — help me
+`service` is one of: Heating — furnace or boiler · Air conditioning or heat pump · Plumbing · Water heater / tankless · Drain cleaning or backup · Sump pump / backwater valve · Water filtration / softener · Radiant heat / snowmelt · Emergency flood response · Maintenance program walkthrough · Commercial HVAC · Commercial backflow testing · Commercial boilers · Commercial plumbing · Commercial maintenance program · Not sure — help me
 
 ## What the Hub should do with it
 
@@ -59,3 +61,8 @@ The key is visible in the site's JavaScript, so it is a **spam filter, not a sec
 ## Hooking it up on the website
 
 In `_src/build.py` set `CONFIG["leadEndpoint"]` and `CONFIG["leadKey"]`, run `python3 _src/build.py`, commit, push. Optional: `CONFIG["web3formsKey"]` sends an email copy of every lead to info@ldrservice.com as a backup.
+
+## Changes after the Hub findings (20 Nov)
+- `address` is now the street line only; `city` and `postal_code` are sent as separate fields (map to `address_line1`, `city`, `postal_code`; postal code is uppercased).
+- "Commercial boiler / plumbing" is now two options: "Commercial boilers" → `hvac`, "Commercial plumbing" → `plumbing`.
+- Choosing "Emergency (24/7)" now also shows a "call now" prompt on the form, so an emergency never relies on the form alone.

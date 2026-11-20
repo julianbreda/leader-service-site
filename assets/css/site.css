@@ -591,3 +591,6 @@ body:not(.is-home) .cine-skip{display:none}
 .mobile-menu a{font-size:1.15rem;padding:12px 0}
 .book-band form.book{background:#fff;border-color:transparent;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
 .block.tight{padding:48px 0}
+
+.emerg-note{background:#fff4f2;border:1px solid #f3c7bf;color:#8a1f11;padding:12px 14px;font-size:.92rem;margin:0 0 18px;border-radius:2px}
+.emerg-note a{font-weight:700;color:#8a1f11;text-decoration:underline;white-space:nowrap}

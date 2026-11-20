@@ -15,7 +15,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"><link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/site.css?v=202611201227">
+<link rel="stylesheet" href="/assets/css/site.css?v=202611201343">
 <script>window.LS_CONFIG={"leadEndpoint": "", "leadKey": "", "web3formsKey": "", "ga4": "", "phone": "647.848.7526", "email": "info@ldrservice.com", "legacyRoutes": {"": "/", "home": "/", "divisions": "/about/", "home-services": "/residential/", "mechanical-services": "/commercial/", "services": "/services/", "care": "/maintenance-program/", "technology": "/technology/", "contact": "/contact/", "privacy-policy": "/privacy-policy/", "sms-terms": "/sms-terms/", "terms": "/terms/"}};</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": ["HVACBusiness", "Plumber"], "@id": "https://ldrservice.com/#business", "name": "Leader Service", "url": "https://ldrservice.com/", "telephone": "+16478487526"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://ldrservice.com/"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://ldrservice.com/guides/"}, {"@type": "ListItem", "position": 3, "name": "Backflow testing requirements in Vaughan", "item": "https://ldrservice.com/guides/backflow-testing-requirements-vaughan/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much notice does the City give before a test is due?", "acceptedAnswer": {"@type": "Answer", "text": "Do not rely on a notice. Track each device's anniversary date yourself or have your service provider track it."}}, {"@type": "Question", "name": "Does a residential irrigation system need a backflow preventer?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Lawn irrigation systems connected to the municipal supply require a backflow preventer in Vaughan."}}, {"@type": "Question", "name": "What if my device fails its test?", "acceptedAnswer": {"@type": "Answer", "text": "It must be repaired or replaced and retested, and the passing result submitted."}}]}, {"@type": "Article", "headline": "Backflow testing requirements in Vaughan", "description": "Who needs a backflow preventer in Vaughan, how often it must be tested, what happens if a test is missed, and how to stay compliant.", "datePublished": "2026-11-20", "dateModified": "2026-11-20", "author": {"@id": "https://ldrservice.com/#business"}, "publisher": {"@id": "https://ldrservice.com/#business"}, "mainEntityOfPage": "https://ldrservice.com/guides/backflow-testing-requirements-vaughan/", "image": "https://ldrservice.com/assets/img/og.jpg"}]}</script>
 </head>
@@ -65,14 +65,17 @@
             <div class="field"><label for="fn">Full Name</label><input id="fn" name="name" autocomplete="name" placeholder="Jane Smith" required></div>
             <div class="field"><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel" placeholder="(905) 555-0123" required></div>
           </div>
+          <div class="field"><label for="em">Email <span style="opacity:.6">(optional)</span></label><input id="em" name="email" type="email" autocomplete="email" placeholder="jane@email.com"></div>
+          <div class="field"><label for="addr">Street Address</label><input id="addr" name="address" autocomplete="address-line1" placeholder="123 Main St"></div>
           <div class="frow">
-            <div class="field"><label for="em">Email <span style="opacity:.6">(optional)</span></label><input id="em" name="email" type="email" autocomplete="email" placeholder="jane@email.com"></div>
-            <div class="field"><label for="addr">Service Address</label><input id="addr" name="address" autocomplete="street-address" placeholder="123 Main St, Vaughan"></div>
+            <div class="field"><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" placeholder="Vaughan"></div>
+            <div class="field"><label for="pc">Postal Code</label><input id="pc" name="postal_code" autocomplete="postal-code" placeholder="L4K 4X2" maxlength="7"></div>
           </div>
           <div class="frow">
-            <div class="field"><label for="svc">Service Needed</label><select id="svc" name="service"><option>Heating — furnace or boiler</option><option>Air conditioning or heat pump</option><option>Plumbing</option><option>Water heater / tankless</option><option>Drain cleaning or backup</option><option>Sump pump / backwater valve</option><option>Water filtration / softener</option><option>Radiant heat / snowmelt</option><option>Emergency flood response</option><option>Maintenance program walkthrough</option><option>Commercial HVAC</option><option>Commercial backflow testing</option><option>Commercial boiler / plumbing</option><option>Commercial maintenance program</option><option>Not sure — help me</option></select></div>
+            <div class="field"><label for="svc">Service Needed</label><select id="svc" name="service"><option>Heating — furnace or boiler</option><option>Air conditioning or heat pump</option><option>Plumbing</option><option>Water heater / tankless</option><option>Drain cleaning or backup</option><option>Sump pump / backwater valve</option><option>Water filtration / softener</option><option>Radiant heat / snowmelt</option><option>Emergency flood response</option><option>Maintenance program walkthrough</option><option>Commercial HVAC</option><option>Commercial backflow testing</option><option>Commercial boilers</option><option>Commercial plumbing</option><option>Commercial maintenance program</option><option>Not sure — help me</option></select></div>
             <div class="field"><label for="urg">Urgency</label><select id="urg" name="urgency"><option>Standard</option><option>Same-day</option><option>Emergency (24/7)</option></select></div>
           </div>
+          <div class="emerg-note" hidden><b>Emergency?</b> Call <a href="tel:+16478487526" data-loc="emergency-note">647.848.7526</a> now for the fastest response. You can still send this request too.</div>
           <div class="field"><label for="msg">What's happening? <span style="opacity:.6">(optional)</span></label><input id="msg" name="message" placeholder="e.g. no heat upstairs, boiler showing an error"></div>
           <div class="hp" aria-hidden="true"><label>Leave blank<input name="website" tabindex="-1" autocomplete="off"></label></div>
           <div class="sms-consent">
@@ -107,6 +110,6 @@
   </div>
 </footer>
 <div class="mbar" role="navigation" aria-label="Quick actions"><a class="call" href="tel:+16478487526" data-loc="mobile-bar"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 4h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2A16 16 0 013 6c0-1 1-2 2-2z"></path></svg> Call now</a><a class="bk" href="#book">Book online</a></div>
-<script src="/assets/js/site.js?v=202611201227" defer></script>
+<script src="/assets/js/site.js?v=202611201343" defer></script>
 
 </body></html>

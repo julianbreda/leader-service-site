@@ -154,7 +154,7 @@ assert 'href="/privacy-policy/"' in CONSENT and 'href="/sms-terms/"' in CONSENT
 SERVICE_OPTIONS = ["Heating — furnace or boiler", "Air conditioning or heat pump", "Plumbing", "Water heater / tankless",
     "Drain cleaning or backup", "Sump pump / backwater valve", "Water filtration / softener", "Radiant heat / snowmelt",
     "Emergency flood response", "Maintenance program walkthrough", "Commercial HVAC", "Commercial backflow testing",
-    "Commercial boiler / plumbing", "Commercial maintenance program", "Not sure — help me"]
+    "Commercial boilers", "Commercial plumbing", "Commercial maintenance program", "Not sure — help me"]
 
 def lead_form(preselect=None):
     opts = "".join(f'<option{" selected" if o == preselect else ""}>{e(o)}</option>' for o in SERVICE_OPTIONS)
@@ -164,14 +164,17 @@ def lead_form(preselect=None):
             <div class="field"><label for="fn">Full Name</label><input id="fn" name="name" autocomplete="name" placeholder="Jane Smith" required></div>
             <div class="field"><label for="ph">Phone</label><input id="ph" name="phone" type="tel" autocomplete="tel" placeholder="(905) 555-0123" required></div>
           </div>
+          <div class="field"><label for="em">Email <span style="opacity:.6">(optional)</span></label><input id="em" name="email" type="email" autocomplete="email" placeholder="jane@email.com"></div>
+          <div class="field"><label for="addr">Street Address</label><input id="addr" name="address" autocomplete="address-line1" placeholder="123 Main St"></div>
           <div class="frow">
-            <div class="field"><label for="em">Email <span style="opacity:.6">(optional)</span></label><input id="em" name="email" type="email" autocomplete="email" placeholder="jane@email.com"></div>
-            <div class="field"><label for="addr">Service Address</label><input id="addr" name="address" autocomplete="street-address" placeholder="123 Main St, Vaughan"></div>
+            <div class="field"><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" placeholder="Vaughan"></div>
+            <div class="field"><label for="pc">Postal Code</label><input id="pc" name="postal_code" autocomplete="postal-code" placeholder="L4K 4X2" maxlength="7"></div>
           </div>
           <div class="frow">
             <div class="field"><label for="svc">Service Needed</label><select id="svc" name="service">{opts}</select></div>
             <div class="field"><label for="urg">Urgency</label><select id="urg" name="urgency"><option>Standard</option><option>Same-day</option><option>Emergency (24/7)</option></select></div>
           </div>
+          <div class="emerg-note" hidden><b>Emergency?</b> Call <a href="tel:{BIZ['tel']}" data-loc="emergency-note">{BIZ['phone']}</a> now for the fastest response. You can still send this request too.</div>
           <div class="field"><label for="msg">What's happening? <span style="opacity:.6">(optional)</span></label><input id="msg" name="message" placeholder="e.g. no heat upstairs, boiler showing an error"></div>
           <div class="hp" aria-hidden="true"><label>Leave blank<input name="website" tabindex="-1" autocomplete="off"></label></div>
           {CONSENT}<button type="submit" class="btn btn-solid">Request my service call</button>

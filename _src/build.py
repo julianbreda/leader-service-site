@@ -50,6 +50,7 @@ def business_schema():
         "telephone": BIZ["tel"], "email": BIZ["email"],
         "logo": SITE + "/assets/img/logo.png", "image": SITE + "/assets/img/og.jpg",
         "slogan": "Leading you in the right direction",
+        "sameAs": BIZ["same_as"], "hasMap": BIZ["google_profile"],
         "description": "Residential and commercial mechanical services in Vaughan and the Greater Toronto Area: plumbing, heating, boilers, air conditioning, hydronics, drains, water filtration, backflow testing, flood response and preventative maintenance programs.",
         "address": {"@type": "PostalAddress", "streetAddress": BIZ["street"], "addressLocality": BIZ["city"],
                     "addressRegion": BIZ["region"], "postalCode": BIZ["postal"], "addressCountry": "CA"},
@@ -130,7 +131,7 @@ def footer():
           <span><span class="logo-word" style="color:#fff">LEADER</span><span class="logo-sub" style="color:#8fa9c9"><i></i>SERVICE<i></i></span></span>
         </a>
         <p>Residential and commercial mechanical service for homes and buildings across Vaughan and the Greater Toronto Area. Backed by three generations of Leader Mechanical.</p>
-        <address class="foot-addr">{e(BIZ['legal'])}<br>{e(BIZ['street'])}<br>{BIZ['city']}, {BIZ['region']} {BIZ['postal']}<br><a href="tel:{BIZ['tel']}">{BIZ['phone']}</a> · <a href="mailto:{BIZ['email']}">{BIZ['email']}</a><br>Open 24/7 for emergencies</address>
+        <address class="foot-addr">{e(BIZ['legal'])}<br>{e(BIZ['street'])}<br>{BIZ['city']}, {BIZ['region']} {BIZ['postal']}<br><a href="tel:{BIZ['tel']}">{BIZ['phone']}</a> · <a href="mailto:{BIZ['email']}">{BIZ['email']}</a><br>Open 24/7 for emergencies<br><a href="{BIZ['google_profile']}" rel="noopener" target="_blank">Find us on Google</a></address>
       </div>
       <div><h4>Residential</h4>{res}</div>
       <div><h4>Commercial</h4>{com}<h4 style="margin-top:22px">Company</h4><a href="/about/">About</a><a href="/maintenance-program/">Maintenance Program</a><a href="/technology/">Technology</a><a href="/guides/">Guides</a><a href="/faq/">FAQ</a><a href="/contact/">Book a Service Call</a></div>

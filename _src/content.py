@@ -19,6 +19,9 @@ BIZ = {
     "lat": 43.8019,
     "lng": -79.5236,
     "url": "https://ldrservice.com",
+    # Google Business Profile (kgmid /g/11z_59tf5s). Add other profiles (Yelp, HomeStars...) here too.
+    "google_profile": "https://share.google/9ZF2Jo94HyRAN5g5i",
+    "same_as": ["https://share.google/9ZF2Jo94HyRAN5g5i", "https://www.google.com/search?kgmid=/g/11z_59tf5s"],
 }
 
 AREAS_SHORT = ["Vaughan", "Woodbridge", "Maple", "Kleinburg", "Concord",

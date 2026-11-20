@@ -2,8 +2,21 @@
 (function(){
   var C = window.LS_CONFIG || {};
   // Lead destination comes from /lead-config.js (window.LS_LEADS), not from the build.
-  var L = window.LS_LEADS || {}, target = (L.endpoints || {})[L.use] || '';
-  C.leadEndpoint = target; C.leadKey = L.key || ''; C.web3formsKey = L.emailBackupKey || '';
+  // Loaded fresh on every page view (timestamped URL) so a Dev -> Live switch takes
+  // effect immediately, never served from a stale browser cache.
+  function applyLeads(){
+    var L = window.LS_LEADS || {};
+    C.leadEndpoint = (L.endpoints || {})[L.use] || ''; C.leadKey = L.key || ''; C.web3formsKey = L.emailBackupKey || '';
+  }
+  function loadLeads(){
+    return new Promise(function(done){
+      var s = document.createElement('script');
+      s.src = '/lead-config.js?t=' + Date.now();
+      s.onload = s.onerror = function(){ applyLeads(); done(); };
+      document.head.appendChild(s);
+    });
+  }
+  var leadsReady = loadLeads();
 
   // Old hash URLs (#/privacy-policy etc.) from the single-page site -> real pages
   var h = location.hash;
@@ -126,6 +139,9 @@
   }
   function flat(o){ var r = {}; for (var k in o) r[k] = typeof o[k] === 'object' ? JSON.stringify(o[k]) : o[k]; return r; }
   function send(lead){
+    return leadsReady.then(function(){ return C.leadEndpoint ? null : loadLeads(); }).then(function(){ return sendNow(lead); });
+  }
+  function sendNow(lead){
     if (C.leadEndpoint) {
       var hdr = C.leadKey ? {'X-Lead-Key': C.leadKey} : {};
       return post(C.leadEndpoint, lead, hdr).then(function(r){ if (C.web3formsKey) emailBackup(lead).catch(function(){}); return r; })

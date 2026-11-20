@@ -244,7 +244,6 @@ def page(path, title, desc, body, schema="", is_home=False, og_type="website", e
 {body}
 </div></main>
 {footer()}
-<script src="/lead-config.js" defer></script>
 <script src="/assets/js/site.js?v={VER}" defer></script>
 {'<script src="/assets/js/cine.js?v=' + VER + '" defer></script>' if is_home else ''}
 </body></html>

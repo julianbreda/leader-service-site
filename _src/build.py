@@ -16,11 +16,9 @@ TODAY = datetime.date.today().isoformat()
 
 # ---- integration settings (edit here, then rebuild) -----------------------
 CONFIG = {
-    # Leaders Hub lead webhook (see _src/LEADS-HUB-SPEC.md). Empty = not connected yet.
-    "leadEndpoint": "",
-    "leadKey": "",
-    # Email backup via web3forms.com (free). Empty = no email copy.
-    "web3formsKey": "",
+    # Lead destination (Leaders Hub URL, key, email backup) is NOT set here.
+    # It lives in /lead-config.js at the repo root, read by the browser at runtime,
+    # so switching Dev -> Live is a one-word edit with no rebuild.
     # Google Analytics 4 measurement id, e.g. "G-XXXXXXX". Empty = no analytics.
     "ga4": "",
     "phone": BIZ["phone"], "email": BIZ["email"],
@@ -246,6 +244,7 @@ def page(path, title, desc, body, schema="", is_home=False, og_type="website", e
 {body}
 </div></main>
 {footer()}
+<script src="/lead-config.js" defer></script>
 <script src="/assets/js/site.js?v={VER}" defer></script>
 {'<script src="/assets/js/cine.js?v=' + VER + '" defer></script>' if is_home else ''}
 </body></html>

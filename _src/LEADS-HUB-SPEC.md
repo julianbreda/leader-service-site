@@ -60,7 +60,7 @@ The key is visible in the site's JavaScript, so it is a **spam filter, not a sec
 
 ## Hooking it up on the website
 
-In `_src/build.py` set `CONFIG["leadEndpoint"]` and `CONFIG["leadKey"]`, run `python3 _src/build.py`, commit, push. Optional: `CONFIG["web3formsKey"]` sends an email copy of every lead to info@ldrservice.com as a backup.
+Edit `/lead-config.js` at the repo root: fill in `endpoints.dev` / `endpoints.live` and `key` (the same key is used for both Hub projects), and set `use` to `"dev"` or `"live"`. Commit. No rebuild is needed. Optional: `emailBackupKey` (web3forms.com) also emails each lead to info@ldrservice.com.
 
 ## Changes after the Hub findings (20 Nov)
 - `address` is now the street line only; `city` and `postal_code` are sent as separate fields (map to `address_line1`, `city`, `postal_code`; postal code is uppercased).

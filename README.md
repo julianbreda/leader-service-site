@@ -10,10 +10,9 @@ Static multi-page site for Leader Service, served by GitHub Pages from the `main
 
 Never hand-edit the generated `index.html` files; they are overwritten on every build.
 
-## Integrations (in `CONFIG` at the top of `_src/build.py`)
+## Integrations
 
-- `leadEndpoint` / `leadKey`: Leaders Hub lead webhook. See `_src/LEADS-HUB-SPEC.md`.
-- `web3formsKey`: optional email copy of every lead.
+- Lead destination: **not set in the build.** It lives in `/lead-config.js` at the repo root, which the browser reads at runtime. To switch Dev → Live, change `use: "dev"` to `use: "live"` and commit. No rebuild is needed. See `_src/LEADS-HUB-SPEC.md`.
 - `ga4`: Google Analytics 4 measurement ID. Lead submissions fire `generate_lead`; phone taps fire `click_to_call`.
 
 ## Other notes

@@ -1,6 +1,9 @@
 /* Leader Service site behaviour. Config is injected by the build as window.LS_CONFIG. */
 (function(){
   var C = window.LS_CONFIG || {};
+  // Lead destination comes from /lead-config.js (window.LS_LEADS), not from the build.
+  var L = window.LS_LEADS || {}, target = (L.endpoints || {})[L.use] || '';
+  C.leadEndpoint = target; C.leadKey = L.key || ''; C.web3formsKey = L.emailBackupKey || '';
 
   // Old hash URLs (#/privacy-policy etc.) from the single-page site -> real pages
   var h = location.hash;

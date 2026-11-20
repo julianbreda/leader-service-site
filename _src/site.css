@@ -1,0 +1,112 @@
+/* ===== Additions for the multi-page build (layered on legacy.css) ===== */
+.page.active{animation:none}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.nav .brand,.foot-brand .brand{cursor:pointer}
+.nlink.current::after{transform:scaleX(1)}
+
+/* breadcrumb */
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-family:'Montserrat';font-weight:600;font-size:.74rem;letter-spacing:.06em;color:#9fbce0;margin-bottom:22px}
+.crumbs a{color:#9fbce0}.crumbs a:hover{color:#fff}
+.crumbs span[aria-hidden]{opacity:.5}
+
+/* hero on new pages reuses .dhero; add an answer card */
+.answer{max-width:860px;margin:34px 0 0;padding:24px 28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-left:3px solid var(--blue);border-radius:2px}
+.answer p{color:#e3ecf8;font-size:1.06rem;line-height:1.7;margin:0}
+.answer .alabel{display:block;font-family:'Montserrat';font-weight:600;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:#8fb4e8;margin-bottom:10px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+.dhero .btn-line{color:#fff;border-color:rgba(255,255,255,.35)}
+.dhero .btn-line:hover{border-color:#fff;color:#fff}
+
+/* prose */
+.prose{max-width:760px}
+.prose h2{font-size:clamp(1.4rem,2.4vw,1.85rem);font-weight:800;margin:48px 0 14px}
+.prose h2:first-child{margin-top:0}
+.prose p,.prose li{color:#3b4048;font-size:1.04rem}
+.prose ul{padding-left:20px;margin:6px 0 0}.prose li{margin:6px 0}
+.prose a{color:var(--navy);text-decoration:underline}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:64px;align-items:start}
+.aside-card{position:sticky;top:110px;background:var(--mist);border:1px solid var(--line);padding:28px}
+.aside-card h3{font-size:1.05rem;margin-bottom:12px}
+.aside-card .sd-includes{margin-bottom:22px}
+.aside-card .btn{width:100%;justify-content:center;margin-top:10px}
+.aside-card .tel{display:block;font-family:'Montserrat';font-weight:700;font-size:1.3rem;color:var(--navy);margin:6px 0 4px}
+.aside-card small{color:var(--gray)}
+
+/* link grids */
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.link-grid a{background:#fff;padding:24px 26px;display:flex;flex-direction:column;gap:6px;transition:background .25s}
+.link-grid a:hover{background:var(--mist)}
+.link-grid b{font-family:'Montserrat';font-weight:700;font-size:1.02rem;color:var(--ink)}
+.link-grid span{color:var(--gray);font-size:.9rem;line-height:1.5}
+.link-grid a::after{content:"→";color:var(--navy);font-weight:700;margin-top:6px}
+.block{padding:96px 0}
+.block.mist{background:var(--mist);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.block .head{margin-bottom:40px}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chips span,.chips a{font-size:.84rem;font-weight:500;border:1px solid var(--line);padding:7px 13px;background:#fff;border-radius:2px}
+.chips a:hover{border-color:var(--navy);color:var(--navy)}
+
+/* FAQ */
+.faq{max-width:860px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font-family:'Montserrat';font-weight:700;font-size:1.02rem;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--navy);font-size:1.3rem;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:#3b4048;padding:0 0 22px;max-width:72ch}
+
+/* trust strip */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);background:#fff}
+.trust div{padding:22px 24px;border-left:1px solid var(--line)}
+.trust div:first-child{border-left:0}
+.trust b{display:block;font-family:'Montserrat';font-weight:800;font-size:1.05rem;color:var(--navy)}
+.trust span{font-size:.86rem;color:var(--gray)}
+
+/* booking band on every page */
+.book-band{background:linear-gradient(160deg,var(--deep),#0a2450 68%,#0d2f63);color:#fff;padding:96px 0}
+.book-band .contact-grid{align-items:start}
+.book-band h2{color:#fff;font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:800;margin:18px 0}
+.book-band .lead{color:#a9c0dc}
+.book-band .bookphone,.book-band .bookmail{color:#fff}
+.book-band .contact-meta{color:#8fa9c9}
+.book-band form.book{color:var(--ink)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.formmsg.err{display:block;background:#fff4f2;color:#8a1f11;border-color:#f3c7bf}
+
+/* home intro (gives the home page a real H1 + local keywords) */
+.home-intro{padding:96px 0 40px}
+.home-intro h1{font-size:clamp(1.8rem,3.6vw,2.8rem);font-weight:800;max-width:22ch;margin:18px 0}
+.home-intro .lead{max-width:68ch}
+.home-intro .chips{margin-top:26px}
+
+/* sticky mobile action bar */
+.mbar{display:none}
+@media(max-width:760px){
+  .mbar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;box-shadow:0 -1px 0 var(--line),0 -8px 24px rgba(10,28,51,.08);padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Montserrat';font-weight:700;font-size:.92rem;padding:14px 10px;border-radius:2px}
+  .mbar .call{background:var(--navy);color:#fff}
+  .mbar .bk{border:1px solid var(--line);color:var(--ink)}
+  body{padding-bottom:76px}
+}
+@media(max-width:980px){
+  .split{grid-template-columns:1fr;gap:40px}
+  .aside-card{position:static}
+  .link-grid{grid-template-columns:1fr 1fr}
+  .trust{grid-template-columns:1fr 1fr}
+  .trust div:nth-child(3){border-left:0}
+  .trust div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media(max-width:560px){
+  .link-grid{grid-template-columns:1fr}
+  .block{padding:64px 0}
+  .book-band{padding:64px 0}
+}
+.foot-grid.wide{grid-template-columns:1.4fr 1fr 1fr 1fr 1fr}
+.foot-addr{color:#8fa9c9;font-size:.9rem;margin-top:14px;line-height:1.6;font-style:normal}
+@media(max-width:980px){.foot-grid.wide{grid-template-columns:1fr 1fr}}
+/* fixes from render check */
+.mobile-menu{overflow-y:auto;visibility:hidden;transition:transform .45s var(--ease),visibility 0s .45s}
+.mobile-menu.open{visibility:visible;transition:transform .45s var(--ease)}
+.mobile-menu a{font-size:1.15rem;padding:12px 0}
+.book-band form.book{background:#fff;border-color:transparent;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.block.tight{padding:48px 0}

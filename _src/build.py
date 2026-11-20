@@ -173,7 +173,7 @@ def lead_form(preselect=None):
             <div class="field"><label for="urg">Urgency</label><select id="urg" name="urgency"><option>Standard</option><option>Same-day</option><option>Emergency (24/7)</option></select></div>
           </div>
           <div class="emerg-note" hidden><b>Emergency?</b> Call <a href="tel:{BIZ['tel']}" data-loc="emergency-note">{BIZ['phone']}</a> now for the fastest response. You can still send this request too.</div>
-          <div class="field"><label for="msg">What's happening? <span style="opacity:.6">(optional)</span></label><input id="msg" name="message" placeholder="e.g. no heat upstairs, boiler showing an error"></div>
+          <div class="field"><label for="msg">What's happening?</label><input id="msg" name="message" required maxlength="2000" placeholder="e.g. no heat upstairs, boiler showing an error"></div>
           <div class="hp" aria-hidden="true"><label>Leave blank<input name="website" tabindex="-1" autocomplete="off"></label></div>
           {CONSENT}<button type="submit" class="btn btn-solid">Request my service call</button>
           <div class="formmsg" role="status" aria-live="polite"></div>

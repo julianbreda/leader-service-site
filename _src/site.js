@@ -90,6 +90,7 @@
       if (!f.name.value.trim()) { f.name.focus(); return; }
       var phone = f.phone.value.replace(/\D/g,'');
       if (phone.length < 10) { f.phone.focus(); say('Please enter a 10-digit phone number so we can call you back.', true); return; }
+      if (f.message && f.message.value.trim().length < 3) { f.message.focus(); say("Please tell us briefly what's happening so we can send the right technician.", true); return; }
       var smsBox = f.querySelector('[name=sms_consent]');
       var lead = {
         source: 'website',

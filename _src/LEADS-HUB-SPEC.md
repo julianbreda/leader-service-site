@@ -65,4 +65,5 @@ Edit `/lead-config.js` at the repo root: fill in `endpoints.dev` / `endpoints.li
 ## Changes after the Hub findings (20 Nov)
 - `address` is now the street line only; `city` and `postal_code` are sent as separate fields (map to `address_line1`, `city`, `postal_code`; postal code is uppercased).
 - "Commercial boiler / plumbing" is now two options: "Commercial boilers" → `hvac`, "Commercial plumbing" → `plumbing`.
+- `message` ("What's happening?") is now REQUIRED on the website form (at least 3 characters, up to 2000), so it maps to `problem` on every lead.
 - Choosing "Emergency (24/7)" now also shows a "call now" prompt on the form, so an emergency never relies on the form alone.

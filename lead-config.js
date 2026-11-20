@@ -10,7 +10,7 @@
   emailBackupKey: optional web3forms.com access key, which also emails each lead to info@ldrservice.com.
 */
 window.LS_LEADS = {
-  use: "",
+  use: "dev",
   endpoints: {
     dev:  "https://bryzqzaltmemvdilunqe.supabase.co/functions/v1/website-lead",
     live: ""    // https://<prod-ref>.supabase.co/functions/v1/website-lead

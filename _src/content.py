@@ -9,8 +9,8 @@ FAQs are emitted as FAQPage schema as well as visible text, so they must match.
 BIZ = {
     "name": "Leader Service",
     "legal": "Leader Service Group Canada Inc.",
-    "phone": "647.848.7526",
-    "tel": "+16478487526",
+    "phone": "437.476.4832",   # Leader Service main line (Twilio). Change here only.
+    "tel": "+14374764832",
     "email": "info@ldrservice.com",
     "street": "132 Corstate Avenue, Unit 100",
     "city": "Concord",
@@ -113,7 +113,7 @@ SERVICES = [
     desc="Licensed residential plumbing in Vaughan, Woodbridge, Kleinburg and the GTA: leak repair, fixtures, repiping, shut-off valves and whole-home plumbing inspections.",
     h1="Residential plumbing",
     tag="Clean water in, waste water out, nowhere it shouldn't be.",
-    answer="Leader Service provides licensed residential plumbing across Vaughan and the Greater Toronto Area: leak detection and repair, fixture and faucet installation, shut-off and pressure valves, repiping, water heaters, sump pumps and drains. Emergency plumbing calls such as burst pipes and active leaks are answered 24/7 at 647.848.7526.",
+    answer="Leader Service provides licensed residential plumbing across Vaughan and the Greater Toronto Area: leak detection and repair, fixture and faucet installation, shut-off and pressure valves, repiping, water heaters, sump pumps and drains. Emergency plumbing calls such as burst pipes and active leaks are answered 24/7 at %%PHONE%%.",
     sections=[
       ("Repairs done once",
        "Leaking supply lines, running toilets, failed shut-off valves, low pressure and noisy pipes are everyday calls. We find the cause rather than the symptom, use quality fixtures and valves, and leave the work area clean."),
@@ -124,7 +124,7 @@ SERVICES = [
     ],
     includes=["Leak detection & repair", "Fixtures & faucets", "Shut-off & PRV valves", "Repiping", "Leak-detection shut-offs", "Whole-home inspection"],
     faqs=[
-      ("Do you offer emergency plumbing?", "Yes. Burst pipes, active leaks and backups are answered 24/7. Shut off the main water valve if you can do so safely, then call 647.848.7526."),
+      ("Do you offer emergency plumbing?", "Yes. Burst pipes, active leaks and backups are answered 24/7. Shut off the main water valve if you can do so safely, then call %%PHONE%%."),
       ("What should normal home water pressure be?", "Most homes are comfortable between roughly 50 and 70 psi. Consistently higher pressure strains fixtures and supply lines and usually means the pressure-reducing valve needs adjustment or replacement."),
       ("Where is my main water shut-off?", "Usually in the basement where the water line enters the house, often near the water meter. We can locate and label it, and test that it actually closes, during any visit."),
     ],
@@ -417,7 +417,7 @@ AREAS = [
     neighbourhoods=["Woodbridge", "Maple", "Kleinburg", "Concord", "Thornhill", "Vellore Village", "Patterson", "Sonoma Heights", "Vaughan Metropolitan Centre"],
     featured=["boiler-service", "furnace-service", "plumbing", "backflow-testing", "water-filtration", "drain-cleaning"],
     faqs=[
-      ("Do you offer emergency service in Vaughan?", "Yes. We are based in Concord and answer emergency plumbing, heating and drain calls across Vaughan 24/7 at 647.848.7526."),
+      ("Do you offer emergency service in Vaughan?", "Yes. We are based in Concord and answer emergency plumbing, heating and drain calls across Vaughan 24/7 at %%PHONE%%."),
       ("Do you do backflow testing in Vaughan?", "Yes. We test backflow preventers for commercial, industrial, institutional and multi-residential properties and track each device's annual due date."),
     ]),
   dict(slug="woodbridge", name="Woodbridge",
@@ -434,7 +434,7 @@ AREAS = [
     neighbourhoods=["Woodbridge Village", "East Woodbridge", "West Woodbridge", "Islington Woods", "Sonoma Heights", "Vellore"],
     featured=["drain-cleaning", "furnace-service", "boiler-service", "water-heaters", "plumbing", "sump-pumps"],
     faqs=[
-      ("How quickly can you get to Woodbridge?", "Our office is in Concord, next to Woodbridge, so emergency calls are typically reached quickly. Call 647.848.7526 for current availability."),
+      ("How quickly can you get to Woodbridge?", "Our office is in Concord, next to Woodbridge, so emergency calls are typically reached quickly. Call %%PHONE%% for current availability."),
     ]),
   dict(slug="maple", name="Maple",
     title="Furnace, AC & Plumbing in Maple | Leader Service",
@@ -616,7 +616,7 @@ GUIDES = [
 # ---------------------------------------------------------------------------
 GENERAL_FAQS = [
   ("What areas does Leader Service serve?", "Vaughan (including Woodbridge, Maple, Kleinburg, Concord and Thornhill), King City and King Township, Richmond Hill, Toronto and the surrounding Greater Toronto Area."),
-  ("Do you offer 24/7 emergency service?", "Yes. No-heat, burst pipe, drain backup and flood emergencies are answered 24/7 at 647.848.7526."),
+  ("Do you offer 24/7 emergency service?", "Yes. No-heat, burst pipe, drain backup and flood emergencies are answered 24/7 at %%PHONE%%."),
   ("Do you serve both homes and commercial buildings?", "Yes. Leader Home Services covers residential properties and Leader Mechanical Services covers commercial, industrial, institutional and multi-residential buildings."),
   ("How is Leader Service related to Leader Mechanical?", "Leader Service is the service and maintenance company of the Leader family of businesses. Leader Mechanical has installed mechanical systems in GTA homes and buildings for three generations; Leader Service maintains and repairs them."),
   ("How does the maintenance program work?", "A property is either on the program or not; there are no tiers. We walk the property, inventory every mechanical system, and price the program on the systems you choose to cover, each serviced at its own correct interval."),
@@ -626,5 +626,5 @@ GENERAL_FAQS = [
   ("Do you charge a service call or truck fee?", "Not on maintenance program work. For one-off service calls, we explain any diagnostic or trip charge before booking."),
   ("Do you give prices before starting work?", "Yes. You get the price and approve it before any repair begins."),
   ("Do you do backflow testing?", "Yes, for commercial, industrial, institutional and multi-residential properties, with each device tracked to its annual due date."),
-  ("How do I book?", "Call 647.848.7526, email info@ldrservice.com, or use the booking form on any page of this site."),
+  ("How do I book?", "Call %%PHONE%%, email info@ldrservice.com, or use the booking form on any page of this site."),
 ]

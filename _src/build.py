@@ -203,6 +203,10 @@ TRUST = '''<div class="trust">
   <div><b>Every visit documented</b><span>Digital service record</span></div>
 </div>'''
 
+def fill_tokens(s):
+    """Phone number lives only in BIZ; content uses %%PHONE%% / %%TEL%% tokens."""
+    return s.replace("%%PHONE%%", BIZ["phone"]).replace("%%TEL%%", BIZ["tel"])
+
 def _trim(d):
     if len(d) <= 158: return d
     cut = d[:156]
@@ -249,6 +253,7 @@ def page(path, title, desc, body, schema="", is_home=False, og_type="website", e
 {'<script src="/assets/js/cine.js?v=' + VER + '" defer></script>' if is_home else ''}
 </body></html>
 '''
+    doc = fill_tokens(doc)
     out = ROOT / path.strip("/") / "index.html" if path != "/" else ROOT / "index.html"
     if path.endswith(".html"): out = ROOT / path.strip("/")
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -379,8 +384,8 @@ def build_legacy_pages():
     frag = frag.replace('<div class="contact-meta r d3">Serving Vaughan &amp; the GTA, Ontario</div>',
         f'<div class="contact-meta r d3">{e(BIZ["street"])}, {BIZ["city"]}, {BIZ["region"]} {BIZ["postal"]}<br>Serving Vaughan &amp; the GTA · Open 24/7 for emergencies</div>')
     frag = frag.replace("<section>", '<section id="book">', 1)
-    page("/contact/", "Book a Service Call | Leader Service | 647.848.7526",
-         "Book plumbing, heating, HVAC, drain or emergency service in Vaughan and the GTA. Call 647.848.7526 or book online; a coordinator calls back to confirm.",
+    page("/contact/", "Book a Service Call | Leader Service | " + BIZ["phone"],
+         "Book plumbing, heating, HVAC, drain or emergency service in Vaughan and the GTA. Call %%PHONE%% or book online; a coordinator calls back to confirm.",
          frag, [crumbs_schema([("Home", "/"), ("Contact", "/contact/")]), {"@type": "ContactPage", "url": SITE + "/contact/", "about": {"@id": BUSINESS_ID}}], priority="0.8")
 
     for name, path, title in [("privacy-policy", "/privacy-policy/", "Privacy Policy | Leader Service"),
@@ -538,7 +543,7 @@ Sitemap: {SITE}/sitemap.xml
     area_lines = "\n".join(f"- [{a['name']}]({SITE}{area_url(a)})" for a in AREAS)
     guide_lines = "\n".join(f"- [{g['h1']}]({SITE}{guide_url(g)})" for g in GUIDES)
     faq_lines = "\n".join(f"- **{q}** {a}" for q, a in GENERAL_FAQS)
-    (ROOT / "llms.txt").write_text(f"""# Leader Service
+    (ROOT / "llms.txt").write_text(fill_tokens(f"""# Leader Service
 
 > Leader Service ({BIZ['legal']}) is a residential and commercial mechanical service company based at {BIZ['street']}, {BIZ['city']} (Vaughan), Ontario {BIZ['postal']}, Canada. It provides plumbing, heating, boiler, furnace, air conditioning, hydronic radiant and snowmelt, water heater, drain, sump pump and backwater valve, water filtration, flood response, commercial HVAC, backflow testing and preventative maintenance services across Vaughan and the Greater Toronto Area, with 24/7 emergency response. Phone {BIZ['phone']}, email {BIZ['email']}.
 
@@ -563,7 +568,7 @@ Key facts:
 
 ## Contact
 - [Book a service call]({SITE}/contact/)
-""")
+"""))
 
 VER = datetime.datetime.now().strftime("%Y%m%d%H%M")
 

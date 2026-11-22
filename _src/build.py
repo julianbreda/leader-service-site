@@ -111,6 +111,7 @@ def header(path):
     <nav class="links" aria-label="Main">{links}</nav>
     <div class="nav-right">
       <a href="tel:{BIZ['tel']}" class="navphone" data-loc="header">{BIZ['phone']}</a>
+      <a class="navcall" href="tel:{BIZ['tel']}" data-loc="header-icon" aria-label="Call Leader Service">{ICON_PHONE}</a>
       <a class="btn btn-line" href="/contact/">Book Service</a>
       <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>

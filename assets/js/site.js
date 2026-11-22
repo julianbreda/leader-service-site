@@ -151,6 +151,24 @@
     return emailBackup(lead);
   }
 
+  // Mobile action bar: hidden on the first screen, hidden while the booking form
+  // is visible or the menu is open, shown otherwise.
+  (function(){
+    var bar = document.querySelector('.mbar'); if (!bar) return;
+    var bookOnScreen = false, book = document.getElementById('book');
+    if (book && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function(es){ bookOnScreen = es[0].isIntersecting; upd(); }, {threshold: 0.15}).observe(book);
+    }
+    function upd(){
+      var hero = document.getElementById('cineHero');
+      var pastHero = hero ? hero.getBoundingClientRect().bottom < window.innerHeight * 0.5 : window.scrollY > window.innerHeight * 0.6;
+      var show = pastHero && !bookOnScreen && !document.body.classList.contains('menu-open');
+      bar.classList.toggle('show', show);
+    }
+    window.addEventListener('scroll', upd, {passive: true}); window.addEventListener('resize', upd); upd();
+    document.addEventListener('click', function(){ setTimeout(upd, 0); });
+  })();
+
   // call tracking event
   document.addEventListener('click', function(e){
     var a = e.target.closest('a[href^="tel:"]');

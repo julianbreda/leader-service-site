@@ -113,3 +113,18 @@
 
 .emerg-note{background:#fff4f2;border:1px solid #f3c7bf;color:#8a1f11;padding:12px 14px;font-size:.92rem;margin:0 0 18px;border-radius:2px}
 .emerg-note a{font-weight:700;color:#8a1f11;text-decoration:underline;white-space:nowrap}
+
+/* ---- mobile UX pass (Nov 21): slim bar, shown only after the first screen ---- */
+.navcall{display:none}
+@media(max-width:760px){
+  .nav-right{gap:12px}
+  .nav-right .btn{display:none}
+  .navcall{display:flex;width:40px;height:40px;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:50%;color:var(--navy)}
+  .navcall svg{width:18px;height:18px}
+  .nav:not(.solid) .navcall{color:#fff;border-color:rgba(255,255,255,.45)}
+  .mbar{padding:8px 10px calc(8px + env(safe-area-inset-bottom));gap:8px;transform:translateY(110%);transition:transform .28s ease;pointer-events:none}
+  .mbar.show{transform:none;pointer-events:auto}
+  .mbar a{padding:11px 8px;font-size:.86rem}
+  .mbar svg{width:17px;height:17px}
+  body{padding-bottom:64px}
+}

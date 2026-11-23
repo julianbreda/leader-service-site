@@ -628,3 +628,96 @@ GENERAL_FAQS = [
   ("Do you do backflow testing?", "Yes, for commercial, industrial, institutional and multi-residential properties, with each device tracked to its annual due date."),
   ("How do I book?", "Call %%PHONE%%, email info@ldrservice.com, or use the booking form on any page of this site."),
 ]
+
+# ---------------------------------------------------------------------------
+# SERVICE x CITY PAGES — only for high-value pairs, each with genuinely local
+# detail so they are not near-duplicates of the service or area page.
+# URL: /<book>/<service-slug>/<area-slug>/
+# ---------------------------------------------------------------------------
+COMBOS = [
+  dict(service="boiler-service", area="kleinburg",
+    title="Boiler Service Kleinburg | Leader Service",
+    desc="Annual boiler service, repair and replacement for Kleinburg custom and estate homes, including boilers feeding radiant floors, snowmelt, pools and indirect hot water.",
+    h1="Boiler service in Kleinburg",
+    answer="Kleinburg estate homes usually run a modulating condensing boiler that feeds several systems at once: radiant floors, panel radiators, an indirect hot water tank and often a snowmelt loop or pool. That boiler should be serviced every fall, together with everything it feeds. Leader Service services and repairs these plants across Kleinburg, with 24/7 no-heat response.",
+    local=[
+      ("One boiler, many jobs", "In a large Kleinburg home the boiler is rarely just heat. When it locks out, the floors go cold, the hot water stops and the driveway stops melting at the same time. So a proper fall service covers the plant as a whole: combustion and safety controls on the boiler, then pressure, expansion tank, mixing valves, zone valves, circulators and glycol on the loops it serves."),
+      ("What we usually find", "Air in long radiant loops, expansion tanks that have lost their charge, mixing valves that have drifted, and condensate traps clogged on high-efficiency boilers. Hard York Region water also scales the boiler's heat exchanger and the indirect tank. Each is caught on an annual visit long before it becomes a January no-heat call."),
+      ("Replacing a boiler in an estate home", "When replacement is due, we size from a heat-loss calculation for the house rather than the old nameplate, and keep the existing distribution where it is sound. Most Kleinburg homes suit a modulating condensing boiler with outdoor reset, sometimes in a cascade of two for redundancy."),
+    ],
+    faqs=[("When should a Kleinburg home's boiler be serviced?", "Every September or October, before the heating season, together with the radiant, snowmelt and indirect hot water it feeds."),
+          ("Do you service boilers that run snowmelt and pool heat?", "Yes. We service the boiler and every loop it serves, including glycol testing on snowmelt and pool heat exchangers.")]),
+  dict(service="boiler-service", area="richmond-hill",
+    title="Boiler Service Richmond Hill | Leader Service",
+    desc="Boiler service, repair and replacement in Richmond Hill, from Bayview Hill and Oak Ridges custom homes to older hydronic systems in Mill Pond. 24/7 no-heat response.",
+    h1="Boiler service in Richmond Hill",
+    answer="Leader Service services and repairs residential boilers across Richmond Hill, from modern combi and condensing boilers in Bayview Hill and Oak Ridges custom homes to older cast-iron hydronic systems in established neighbourhoods. An annual fall service covers combustion, safety controls, pressure and the expansion tank, and every visit is documented.",
+    local=[
+      ("Two kinds of boiler homes", "Richmond Hill has both ends of the hydronic spectrum: large new custom homes with condensing boilers, radiant floors and indirect tanks, and older homes with cast-iron radiators and boilers that are decades old. Both need annual service, but the work differs. Newer units need condensate and heat-exchanger care. Older ones need close attention to venting, controls and leaks."),
+      ("Repair or replace", "An older boiler that still heats evenly is often worth maintaining. Replacement makes sense when the heat exchanger is failing, parts are no longer available, or repairs keep repeating. We give you the condition and both options in writing."),
+    ],
+    faqs=[("Do you work on older cast-iron boilers in Richmond Hill?", "Yes. We service and repair older hydronic boilers and radiator systems, as well as modern condensing and combi boilers."),
+          ("Do you offer emergency boiler repair in Richmond Hill?", "Yes, no-heat calls are answered 24/7.")]),
+  dict(service="radiant-heating", area="king-city",
+    title="Radiant & Snowmelt Service King City | Leader Service",
+    desc="Radiant floor heating, snowmelt and hydronic system service for King City and King Township estate homes: fall commissioning, glycol testing, balancing and repair.",
+    h1="Radiant heating and snowmelt service in King City",
+    answer="King City and King Township estate homes often have long radiant floor loops, heated driveways and outbuildings on one hydronic plant. Every fall, Leader Service checks pressure, glycol freeze protection, circulators, mixing and zone valves, and snowmelt controls, so the system is ready before the first snowfall.",
+    local=[
+      ("Built for big properties", "Larger lots mean longer driveways, detached garages and pool houses, often heated by the same boiler as the house. Long loops are more prone to trapped air and uneven heat, and glycol in snowmelt and outbuilding loops breaks down over time. Fall commissioning tests and corrects all of it."),
+      ("Rural power and water", "Many King Township properties are on private wells, and some see longer power outages. We look at water treatment where hard or iron-rich well water feeds the system, and at how the plant restarts after an outage, so a storm does not leave floors or a driveway unprotected."),
+    ],
+    faqs=[("When should snowmelt be commissioned in King City?", "In October or early November, before the first snowfall, including a glycol freeze-protection test."),
+          ("Can you service radiant heat in a detached garage or pool house?", "Yes. We service every zone on the plant, including outbuildings.")]),
+  dict(service="backflow-testing", area="concord",
+    title="Backflow Testing Concord, Vaughan | Leader Service",
+    desc="Annual backflow preventer testing, repair and municipal reporting for industrial, commercial and multi-unit buildings in Concord, Vaughan. Each device tracked to its due date.",
+    h1="Backflow testing in Concord",
+    answer="Industrial, commercial and multi-residential properties in Concord fall under the City of Vaughan's Backflow Prevention By-law, which requires backflow preventers to be tested at least annually by a qualified tester, with results submitted to the City. Leader Service is based in Concord, tracks each device's anniversary, and handles testing, repairs and reporting.",
+    local=[
+      ("Concord's building stock", "Concord is mostly industrial and commercial: warehouses, multi-tenant units and offices along Highway 7, Keele and Jane. Many buildings have more than one device: on the domestic water service, on fire lines and on process or irrigation connections. Each has its own anniversary date."),
+      ("Minutes away", "Our office is at 132 Corstate Avenue, so testing, failed-device rebuilds and retests are scheduled quickly, and can be combined with the building's HVAC and boiler maintenance on one agreement."),
+    ],
+    faqs=[("Do Concord industrial buildings need annual backflow testing?", "Generally yes. Under Vaughan's Backflow Prevention By-law, industrial, commercial, institutional and multi-residential properties need their backflow preventers tested at least once a year."),
+          ("Can backflow testing be combined with HVAC maintenance?", "Yes. One maintenance agreement can cover backflow devices, rooftop units, boilers and plumbing.")]),
+  dict(service="sump-pumps", area="toronto",
+    title="Backwater Valves & Sump Pumps Toronto | Leader Service",
+    desc="Backwater valve and sump pump installation in Toronto, with the itemized documentation for the City's Basement Flooding Protection Subsidy Program.",
+    h1="Backwater valves and sump pumps in Toronto",
+    answer="Many older Toronto homes have no backwater valve, which is the main protection against sewer water backing up into the basement. The City of Toronto's Basement Flooding Protection Subsidy Program covers part of the cost of eligible backwater valves, sump pumps, battery backups and weeping-tile disconnection. Leader Service installs these devices and provides the itemized documentation the application needs.",
+    local=[
+      ("Why Toronto basements flood", "Older parts of Toronto have combined or overloaded sewers. In heavy rain the sewer can surcharge and push water back up through the floor drain. A backwater valve on the main line closes when that happens. Where weeping tiles drain into the sewer, disconnecting them and adding a sump pump keeps groundwater away too."),
+      ("The subsidy, in short", "The City covers a share of the invoiced cost of eligible work, with a cap per device. Amounts, deadlines and the required permits are set by the City and change from time to time, so check toronto.ca before you start. We supply the plumbing assessment and invoice detail the application asks for."),
+    ],
+    faqs=[("Does Toronto subsidize backwater valves?", "Yes. The Basement Flooding Protection Subsidy Program covers part of the cost of eligible devices. Check the City of Toronto's program page for current amounts and eligibility."),
+          ("Do I need a permit for a backwater valve in Toronto?", "Generally yes, a plumbing permit is required for this work. We can advise on what applies to your home.")]),
+  dict(service="furnace-service", area="maple",
+    title="Furnace Repair Maple, Vaughan | Leader Service",
+    desc="Furnace repair, maintenance and replacement for Maple homes, where many original 1990s and 2000s furnaces are reaching the end of their life. 24/7 no-heat service.",
+    h1="Furnace repair and replacement in Maple",
+    answer="Many Maple homes were built in the 1990s and 2000s, so their original furnaces are now 20 or more years old, past the typical 15 to 20 year life. Leader Service repairs, maintains and replaces furnaces across Maple, and gives you an honest repair-or-replace assessment based on condition and safety, not age alone.",
+    local=[
+      ("A neighbourhood of same-age furnaces", "Subdivisions like Eagle Hills, Rutherford and Weston Downs were built in a short span, which means many homes are facing the same furnace, air conditioner and water heater decisions at once. Common failures at this age are inducer motors, ignitors, pressure switches and cracked heat exchangers."),
+      ("Planned replacement", "Replacing on your schedule costs less than replacing on the coldest night of the year. We check the heat exchanger and combustion safety, then lay out repair and replacement options in writing, with sizing based on your house rather than the old unit."),
+    ],
+    faqs=[("Should I replace my 20-year-old furnace in Maple?", "Not automatically. If the heat exchanger is sound and repairs are modest, maintenance can make sense. A cracked heat exchanger or repeated failures point to replacement."),
+          ("Do you offer same-day furnace repair in Maple?", "Yes, and no-heat calls are answered 24/7.")]),
+]
+
+GUIDES.append(dict(slug="ontario-heat-pump-and-home-energy-rebates",
+    title="Ontario Heat Pump Rebates 2026 | Leader Service",
+    desc="Which Ontario rebates cover heat pumps, heat pump water heaters, smart thermostats and insulation in 2026, how much they pay, and how to apply.",
+    h1="Ontario heat pump and home energy rebates",
+    answer="In 2026, Ontario homeowners can get rebates through the Home Renovation Savings Program: up to $7,500 for a cold-climate air-source heat pump, up to $12,000 for a ground-source heat pump, $500 for a heat pump water heater and $100 for a smart thermostat. Income-qualified homes switching from oil can receive up to $25,000 through the Oil to Heat Pump Affordability program. Amounts and rules change, so confirm on the program site before you buy.",
+    sections=[
+      ("Home Renovation Savings Program", "<p>Run by Save on Energy (IESO) with Enbridge Gas, it pays rebates on qualifying upgrades for homes heated by electricity, natural gas, oil, propane or wood. Single upgrades such as a heat pump need no home energy assessment; bundles of two or more upgrades start with an assessment, which is itself rebated.</p><ul><li><b>Cold-climate air-source heat pump</b>: up to $7,500, based on size; the unit must be on Natural Resources Canada's qualified list</li><li><b>Ground-source heat pump</b>: up to $12,000, based on size</li><li><b>Heat pump water heater</b>: $500, ENERGY STAR certified</li><li><b>Smart thermostat</b>: $100</li><li><b>Home energy assessment</b>: $600 back when you complete a bundle</li><li><b>Insulation</b>: up to $7,700 in a bundle, or $1,250 for attic insulation alone</li></ul>"),
+      ("Oil to Heat Pump Affordability (OHPA)", "<p>For income-qualified households heating with oil, this joint federal and Ontario program pays up to $25,000 toward switching to an electric heat pump ($15,000 federal and $10,000 provincial), plus a $250 upfront payment. It is delivered in Ontario through Save on Energy's Energy Affordability Program.</p>"),
+      ("Before you buy", "<ul><li>Check the current amounts and terms on the program site. Rebates change and funding can close.</li><li>Confirm the exact model qualifies before installation, not after.</li><li>Keep the invoice, model and serial numbers, and photos of the installed equipment. Applications ask for them.</li><li>For a heat pump, a proper heat-loss calculation matters more than the rebate: an undersized cold-climate unit will lean on backup heat all winter.</li></ul>"),
+      ("Where Leader Service fits", "<p>We size and install heat pumps, heat pump water heaters and smart thermostats, and we provide the itemized invoice and equipment details the rebate application needs. If your home has a boiler or radiant heat, we will tell you honestly whether a heat pump suits it.</p>"),
+    ],
+    faqs=[("How much is the Ontario heat pump rebate in 2026?", "Through the Home Renovation Savings Program, up to $7,500 for a cold-climate air-source heat pump and up to $12,000 for a ground-source heat pump, depending on size. Confirm current amounts on saveonenergy.ca."),
+          ("Do I need an energy audit to get a heat pump rebate in Ontario?", "Not for a single upgrade. A home energy assessment is needed only when you bundle two or more upgrades, and it is rebated."),
+          ("Is there a rebate for switching from oil to a heat pump?", "Yes. Income-qualified households can receive up to $25,000 through the Oil to Heat Pump Affordability program.")],
+    sources=[("Save on Energy: Home Renovation Savings", "https://saveonenergy.ca/For-Your-Home/Home-Renovation-Savings"),
+             ("Natural Resources Canada: Making home heating more affordable for Ontarians (Sept 2025)", "https://www.canada.ca/en/natural-resources-canada/news/2025/09/making-home-heating-more-affordable-for-ontarians.html")],
+    related=["air-conditioning", "water-heaters", "furnace-service"]))

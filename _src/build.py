@@ -6,7 +6,7 @@ Writes real HTML files to the repo root (served by GitHub Pages).
 Edit page copy in _src/content.py, layout here, styles in _src/site.css.
 """
 import html, json, pathlib, re, shutil, datetime
-from content import BIZ, SERVICES, SERVICE_BY_SLUG, AREAS, AREAS_SHORT, GUIDES, GENERAL_FAQS
+from content import BIZ, SERVICES, SERVICE_BY_SLUG, AREAS, AREAS_SHORT, GUIDES, GENERAL_FAQS, COMBOS
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "_src"
@@ -39,6 +39,13 @@ BUSINESS_ID = SITE + "/#business"
 def svc_url(s): return f"/{s['book']}/{s['slug']}/"
 def area_url(a): return f"/service-areas/{a['slug']}/"
 def guide_url(g): return f"/guides/{g['slug']}/"
+AREA_BY_SLUG = {a["slug"]: a for a in AREAS}
+COMBO_KEYS = {(c["service"], c["area"]) for c in COMBOS}
+def combo_url(svc_slug, area_slug):
+    s = SERVICE_BY_SLUG[svc_slug]; return f"/{s['book']}/{svc_slug}/{area_slug}/"
+def best_url(svc_slug, area_slug):
+    """Service-in-city page if one exists, else the service page."""
+    return combo_url(svc_slug, area_slug) if (svc_slug, area_slug) in COMBO_KEYS else svc_url(SERVICE_BY_SLUG[svc_slug])
 
 # ---------------------------------------------------------------------------
 # schema
@@ -402,7 +409,7 @@ def build_services():
         trail = [("Home", "/"), (label, f"/{s['book']}/"), (s["short"], url)]
         secs = "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in s["sections"])
         incl = "".join(f"<span>{e(x)}</span>" for x in s["includes"])
-        areas = "".join(f'<a href="{area_url(a)}">{e(s["short"])} in {e(a["name"])}</a>' for a in AREAS if s["slug"] in a["featured"]) or \
+        areas = "".join(f'<a href="{combo_url(s["slug"], a["slug"]) if (s["slug"], a["slug"]) in COMBO_KEYS else area_url(a)}">{e(s["short"])} in {e(a["name"])}</a>' for a in AREAS if s["slug"] in a["featured"]) or \
                 "".join(f'<a href="{area_url(a)}">{e(a["name"])}</a>' for a in AREAS)
         rel = link_grid([svc_card(SERVICE_BY_SLUG[r]) for r in s["related"]])
         body = hero(trail, label, s["h1"], s["tag"], s["answer"]) + f'''
@@ -431,7 +438,7 @@ def build_areas():
         trail = [("Home", "/"), ("Service Areas", "/service-areas/"), (a["name"], url)]
         secs = "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in a["local"])
         hoods = "".join(f"<span>{e(n)}</span>" for n in a["neighbourhoods"])
-        feat = link_grid([(f'{SERVICE_BY_SLUG[k]["short"]} in {a["name"]}', svc_url(SERVICE_BY_SLUG[k]), SERVICE_BY_SLUG[k]["tag"]) for k in a["featured"]])
+        feat = link_grid([(f'{SERVICE_BY_SLUG[k]["short"]} in {a["name"]}', best_url(k, a["slug"]), SERVICE_BY_SLUG[k]["tag"]) for k in a["featured"]])
         others = "".join(f'<a href="{area_url(o)}">{e(o["name"])}</a>' for o in AREAS if o is not a)
         faqs = a["faqs"] + [(f"What services does Leader Service offer in {a['name']}?",
                  "Plumbing, furnace and boiler service, air conditioning and heat pumps, radiant heating and snowmelt, water heaters and tankless, drain cleaning, sump pumps and backwater valves, water filtration, flood response, commercial HVAC, backflow testing and preventative maintenance programs.")]
@@ -455,6 +462,35 @@ def build_areas():
               "Leader Service serves Vaughan (Woodbridge, Maple, Kleinburg, Concord, Thornhill and Vellore), King City and King Township, Richmond Hill, Toronto and the surrounding Greater Toronto Area, for residential and commercial properties, with 24/7 emergency response.")
          + f'<section class="block"><div class="wrap">{grid}</div></section>' + book_band(),
          crumbs_schema([("Home", "/"), ("Service Areas", "/service-areas/")]), priority="0.8")
+
+def build_combos():
+    for c in COMBOS:
+        s, a = SERVICE_BY_SLUG[c["service"]], AREA_BY_SLUG[c["area"]]
+        url = combo_url(c["service"], c["area"])
+        label = "Residential" if s["book"] == "residential" else "Commercial"
+        trail = [("Home", "/"), (label, f"/{s['book']}/"), (s["short"], svc_url(s)), (a["name"], url)]
+        secs = "".join(f"<h2>{e(h)}</h2><p>{e(p)}</p>" for h, p in c["local"])
+        incl = "".join(f"<span>{e(x)}</span>" for x in s["includes"])
+        hoods = "".join(f"<span>{e(n)}</span>" for n in a["neighbourhoods"])
+        faqs = c["faqs"] + s["faqs"][:2]
+        rel = link_grid([(s["short"], svc_url(s), "Everything about this service, across the GTA"),
+                         (f"All services in {a['name']}", area_url(a), a["intro"][:90].rsplit(" ", 1)[0] + "…"),
+                         ("Maintenance program", "/maintenance-program/", "Every system on one schedule")])
+        body = hero(trail, f"{label} · {a['name']}", c["h1"], s["tag"], c["answer"]) + f'''
+<section class="block"><div class="wrap split">
+  <div class="prose">{secs}<h2>Areas of {e(a["name"])} we cover</h2><div class="chips">{hoods}</div></div>
+  <aside class="aside-card"><h3>What's included</h3><div class="sd-includes">{incl}</div>
+    <small>Call or text</small><a class="tel" href="tel:{BIZ['tel']}" data-loc="aside">{BIZ['phone']}</a><small>24/7 for emergencies</small>
+    <a class="btn btn-solid" href="#book">Book online</a></aside>
+</div></section>
+<section class="block mist tight"><div class="wrap">{TRUST}</div></section>
+{faq_html(faqs, f"{s['short']} in {a['name']}: questions")}
+<section class="block mist"><div class="wrap"><div class="head"><span class="kicker">Related</span><h2>Keep reading</h2></div>{rel}</div></section>
+{book_band(f"Book {s['short'].lower()} in {a['name']}")}'''
+        schema = [crumbs_schema(trail), faq_schema(faqs),
+                  {"@type": "Service", "name": c["h1"], "serviceType": s["stype"], "description": c["answer"], "url": SITE + url,
+                   "provider": {"@id": BUSINESS_ID}, "areaServed": {"@type": "City", "name": a["name"], "containedInPlace": {"@type": "AdministrativeArea", "name": "Ontario"}}}]
+        page(url, c["title"], c["desc"], body, schema, priority="0.7")
 
 def build_guides():
     for g in GUIDES:
@@ -574,6 +610,6 @@ Key facts:
 VER = datetime.datetime.now().strftime("%Y%m%d%H%M")
 
 if __name__ == "__main__":
-    build_home(); build_legacy_pages(); build_services(); build_areas(); build_guides(); build_faq(); build_404()
+    build_home(); build_legacy_pages(); build_services(); build_combos(); build_areas(); build_guides(); build_faq(); build_404()
     build_static()
     print(f"built {len(SITEMAP)} pages")
